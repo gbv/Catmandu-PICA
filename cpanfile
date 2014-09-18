@@ -1,5 +1,5 @@
 requires 'Catmandu', '>= 0.9';
-requires 'XML::LibXML', '1.78';
+requires 'PICA::Data', '>= 0.22';
 
 # To get PICA via SRU
 recommends 'Catmandu::SRU', '>= 0.032';
