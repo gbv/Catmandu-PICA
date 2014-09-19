@@ -1,6 +1,21 @@
 package Catmandu::PICA;
-#ABSTRACT: Catmandu modules for working with PICA+ data.
-#VERSION
+
+our $VERSION = '0.15';
+
+1;
+__END__
+
+=head1 NAME
+
+Catmandu::PICA - Catmandu modules for working with PICA+ data
+
+=begin markdown
+
+[![Build Status](https://travis-ci.org/gbv/Catmandu-PICA.png)](https://travis-ci.org/gbv/Catmandu-PICA)
+[![Coverage Status](https://coveralls.io/repos/gbv/Catmandu-PICA/badge.png?branch=master)](https://coveralls.io/r/gbv/Catmandu-PICA?branch=master)
+[![Kwalitee Score](http://cpants.cpanauthors.org/dist/Catmandu-PICA.png)](http://cpants.cpanauthors.org/dist/Catmandu-PICA)
+
+=end markdown
 
 =head1 DESCRIPTION
 
@@ -22,28 +37,6 @@ introduction into Catmandu.
 
 =back
 
-=head1 INTERNAL MODULES
-
-The following modules may be renamed or removed in a future release.
-
-=over
-
-=item * L<PICA::Parser::XML>
-
-=item * L<PICA::Parser::Plus>
-
-=item * L<PICA::Parser::Plain>
-
-=item * L<PICA::Writer::XML>
-
-=item * L<PICA::Writer::Plus>
-
-=item * L<PICA::Writer::Plain>
-
-=item * L<PICA::Data>
-
-=back
-
 =head1 CONTRIBUTORS
 
 =encoding utf8
@@ -52,6 +45,17 @@ Johann Rolschewski, <rolschewski@gmail.com>
 
 Jakob Voß <voss@gbv.de>
 
-=cut
+=head1 COPYRIGHT
 
-1; # End of Catmandu::PICA
+Copyright 2014- Johann Rolschewski and Jakob Voss
+
+=head1 LICENSE
+
+This library is free software; you can redistribute it and/or modify it under
+the same terms as Perl itself.
+
+=head1 SEE ALSO
+
+This module is based on L<PICA::Data>
+
+=cut

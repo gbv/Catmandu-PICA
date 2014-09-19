@@ -1,6 +1,6 @@
 package Catmandu::Importer::PICA;
-#ABSTRACT: Package that imports PICA+ data
-#VERSION
+
+our $VERSION = '0.15';
 
 use Catmandu::Sane;
 use PICA::Parser::XML;
@@ -36,6 +36,13 @@ sub generator {
         return $self->parser->next();
     };
 }
+
+1;
+__END__
+
+=head1 NAME
+
+Catmandu::Importer::PICA - Package that imports PICA+ data
 
 =head1 SYNOPSIS
 
@@ -104,5 +111,3 @@ C<picaplus> for normalized PICA+.
 =back
 
 =cut
-
-1;

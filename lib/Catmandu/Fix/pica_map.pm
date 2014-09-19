@@ -1,7 +1,6 @@
 package Catmandu::Fix::pica_map;
 
-# ABSTRACT: copy mab values of one field to a new field
-# VERSION
+our $VERSION = '0.15';
 
 use Catmandu::Sane;
 use Moo;
@@ -107,6 +106,11 @@ sub emit {
 }
 
 1;
+__END__
+
+=head1 NAME
+
+Catmandu::Fix::pica_map - copy mab values of one field to a new field
 
 =head1 SYNOPSIS
 

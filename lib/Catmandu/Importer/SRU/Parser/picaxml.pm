@@ -1,6 +1,6 @@
 package Catmandu::Importer::SRU::Parser::picaxml;
-#ABSTRACT: Parse SRU response with PICA+ data into Catmandu PICA
-#VERSION
+
+our $VERSION = '0.15';
 
 use Moo;
 use PICA::Parser::XML;
@@ -13,6 +13,13 @@ sub parse {
 
     return $parser->next;
 }
+
+1;
+__END__
+
+=head1 NAME
+
+Catmandu::Importer::SRU::Parser::picaxml - Parse SRU response with PICA+ data into Catmandu PICA
 
 =head1 SYNOPSIS
 
@@ -39,5 +46,3 @@ Each picaxml response will be transformed into the format defined by
 L<Catmandu::Importer::PICA>
 
 =cut
-
-1;
