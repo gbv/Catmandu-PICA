@@ -1,6 +1,8 @@
 Changelog for Catmandu-PICA
 
 {{$NEXT}}
+
+0.15  2014-09-19 12:08:39 CEST
  - remove PICA::Data as independent module
  - migrated to Dist::Milla 
 
