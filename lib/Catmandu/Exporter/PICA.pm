@@ -47,6 +47,11 @@ __END__
 
 Catmandu::Exporter::PICA - Package that exports PICA data
 
+=head1 DESCRIPTION
+
+See L<PICA::Data> for more information about PICA data format and record
+structure.
+
 =head1 CONFIGURATION
 
 In addition to the configuration provided by L<Catmandu::Exporter> the exporter

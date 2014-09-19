@@ -51,7 +51,7 @@ Catmandu::Importer::PICA - Package that imports PICA+ data
     my $importer = Catmandu::Importer::PICA->new(file => "pica.xml", type=> "XML");
 
     my $n = $importer->each(sub {
-        my $hashref = $_[0];
+        my $hashref = shift;
         # ...
     });
 
@@ -59,35 +59,11 @@ To convert between PICA+ syntax variants with the L<catmandu> command line clien
 
     catmandu convert PICA --type xml to PICA --type plain < picadata.xml
 
-=head1 PICA
+=head1 DESCRIPTION
 
-Parse PICA XML to native Perl hash containing two keys: '_id' and 'record'. 
-
-  {
-    'record' => [
-                  [
-                    '001@',
-                    '',
-                    '0',
-                    '703'
-                  ],
-                  [
-                    '001A',
-                    '',
-                    '0',
-                    '2045:10-03-11'
-                  ],
-                  [
-                    '028B',
-                    '01',
-                    'd',
-                    'Thomas',
-                    'a',
-                    'Bartzanas'
-                   ]
-
-    '_id' => '658700774'
-  },
+Parses PICA format to native Perl hash containing two keys C<_id> and
+C<record>. See L<PICA::Data> for more information about PICA data format and
+record structure.
 
 =head1 METHODS
 

@@ -19,8 +19,13 @@ Catmandu::PICA - Catmandu modules for working with PICA+ data
 
 =head1 DESCRIPTION
 
-Catmandu::PICA provides methods to work with PICA+ data within the L<Catmandu>
-framework.  See L<Catmandu::Introduction> and L<http://librecat.org/> for an
+Catmandu::PICA provides methods to work with PICA data within the L<Catmandu>
+framework.  
+
+See L<PICA::Data> for more information about PICA data format and record
+structure.
+
+See L<Catmandu::Introduction> and L<http://librecat.org/> for an
 introduction into Catmandu.
 
 =head1 CATMANDU MODULES
@@ -56,6 +61,6 @@ the same terms as Perl itself.
 
 =head1 SEE ALSO
 
-This module is based on L<PICA::Data>
+L<PICA::Data>, L<Catmandu>
 
 =cut
