@@ -1,13 +1,12 @@
 package Catmandu::Fix::pica_map;
 
-# ABSTRACT: copy mab values of one field to a new field
-# VERSION
+our $VERSION = '0.15';
 
 use Catmandu::Sane;
-use Carp qw(confess);
 use Moo;
 
 use Catmandu::Fix::Has;
+use PICA::Path;
 
 has pica_path => ( fix_arg => 1 );
 has path      => ( fix_arg => 1 );
@@ -21,30 +20,25 @@ sub emit {
     my $path       = $fixer->split_path( $self->path );
     my $record_key = $fixer->emit_string( $self->record // 'record' );
     my $join_char  = $fixer->emit_string( $self->join // '' );
-    my $pica_path  = $self->pica_path;
+    my $pica_path  = PICA::Path->new($self->pica_path); 
 
-    my $field_regex;
-    my ( $field, $occurence, $subfield_regex, $from, $to );
-
-    if ( $pica_path
-        =~ /(\d{3}\S)(\[(\d{2})\])?([_A-Za-z0-9]+)?(\/(\d+)(-(\d+))?)?/ )
-    {
-        $field          = $1;
-        $occurence      = $3;
-        $subfield_regex = defined $4 ? "[$4]" : "[_A-Za-z0-9]";
-        $from           = $6;
-        $to             = $8;
-    }
-    else {
-        confess "invalid pica path";
-    }
-
-    $field_regex = $field;
-    $field_regex =~ s/\*/./g;
+    my ($field_regex, $occurrence_regex, $subfield_regex, $from, $length) = @$pica_path;
 
     my $var  = $fixer->var;
     my $vals = $fixer->generate_var;
     my $perl = $fixer->emit_declare_vars( $vals, '[]' );
+
+    my $field_regex_var = $fixer->generate_var;
+    $perl .= $fixer->emit_declare_vars( $field_regex_var, "qr{$field_regex}" );
+
+    my $subfield_regex_var = $fixer->generate_var;
+    $perl .= $fixer->emit_declare_vars( $subfield_regex_var, "qr{$subfield_regex}" );
+
+    my $occurrence_regex_var;
+    if (defined $occurrence_regex) {
+        $occurrence_regex_var = $fixer->generate_var;
+        $perl .= $fixer->emit_declare_vars( $occurrence_regex_var, "qr{$occurrence_regex}" );
+    }
 
     $perl .= $fixer->emit_foreach(
         "${var}->{${record_key}}",
@@ -53,7 +47,11 @@ sub emit {
             my $v    = $fixer->generate_var;
             my $perl = "";
 
-            $perl .= "next if ${var}->[0] !~ /${field_regex}/;";
+            $perl .= "next if ${var}->[0] !~ ${field_regex_var};";
+
+            if (defined $occurrence_regex) {
+                $perl .= "next if (!defined ${var}->[1] || ${var}->[1] !~ ${occurrence_regex_var});";
+            }
 
             if ( $self->value ) {
                 $perl .= $fixer->emit_declare_vars( $v,
@@ -64,7 +62,7 @@ sub emit {
                 my $add_subfields = sub {
                     my $start = shift;
                     "for (my ${i} = ${start}; ${i} < \@{${var}}; ${i} += 2) {"
-                        . "if (${var}->[${i}] =~ /${subfield_regex}/) {"
+                        . "if (${var}->[${i}] =~ ${subfield_regex_var}) {"
                         . "push(\@{${v}}, ${var}->[${i} + 1]);" . "}" . "}";
                 };
                 $perl .= $fixer->emit_declare_vars( $v, "[]" );
@@ -73,8 +71,7 @@ sub emit {
                 if ( !$self->split ) {
                     $perl .= "${v} = join(${join_char}, \@{${v}});";
                     if ( defined( my $off = $from ) ) {
-                        my $len = defined $to ? $to - $off + 1 : 1;
-                        $perl .= "if (eval { ${v} = substr(${v}, ${off}, ${len}); 1 }) {";
+                        $perl .= "if (eval { ${v} = substr(${v}, ${off}, ${length}); 1 }) {";
                     }
                 }
                 $perl .= $fixer->emit_create_path(
@@ -109,6 +106,11 @@ sub emit {
 }
 
 1;
+__END__
+
+=head1 NAME
+
+Catmandu::Fix::pica_map - copy mab values of one field to a new field
 
 =head1 SYNOPSIS
 
@@ -126,5 +128,10 @@ sub emit {
 
     # Copy from field 028A with ocurrance subfields a and d to dc.contributor hash joining them by ' '
     pica_map('028B[01]ad','dcterms.ccontributor', -join => ' ');
+
+=head1 SEE ALSO
+
+See L<PICA::Path> for a definition of PICA path expressions and L<PICA::Data>
+for more methods to process parsed PICA+ records.
 
 =cut

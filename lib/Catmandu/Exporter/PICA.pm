@@ -1,12 +1,12 @@
 package Catmandu::Exporter::PICA;
-#ABSTRACT: Package that exports PICA data
-#VERSION
 
 use Catmandu::Sane;
 use PICA::Writer::Plus;
 use PICA::Writer::Plain;
 use PICA::Writer::XML;
 use Moo;
+
+our $VERSION = '0.15';
 
 with 'Catmandu::Exporter';
 
@@ -40,6 +40,18 @@ sub commit { # TODO: why is this not called automatically?
     $self->writer->end if $self->can('end');
 }
 
+1;
+__END__
+
+=head1 NAME
+
+Catmandu::Exporter::PICA - Package that exports PICA data
+
+=head1 DESCRIPTION
+
+See L<PICA::Data> for more information about PICA data format and record
+structure.
+
 =head1 CONFIGURATION
 
 In addition to the configuration provided by L<Catmandu::Exporter> the exporter
@@ -47,5 +59,3 @@ can be configured with a C<type> parameter as described at
 L<Catmandu::Importer>.
 
 =cut
-
-1;
