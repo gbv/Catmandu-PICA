@@ -9,7 +9,7 @@ Catmandu::PICA - Catmandu modules for working with PICA+ data
 # DESCRIPTION
 
 Catmandu::PICA provides methods to work with PICA+ data within the [Catmandu](https://metacpan.org/pod/Catmandu)
-framework.  See [Catmandu::Introduction](https://metacpan.org/pod/Catmandu::Introduction) and [http://librecat.org/](http://librecat.org/) for an
+framework.  See [Catmandu Introduction](https://github.com/LibreCat/Catmandu/wiki/Introduction) and [http://librecat.org/](http://librecat.org/) for an
 introduction into Catmandu.
 
 # CATMANDU MODULES
