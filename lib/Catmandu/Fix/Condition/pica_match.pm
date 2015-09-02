@@ -1,4 +1,8 @@
 package Catmandu::Fix::Condition::pica_match;
+
+# ABSTRACT: Conditionals on PICA fields
+# VERSION
+
 use Catmandu::Sane;
 use Catmandu::Fix::pica_map;
 use Catmandu::Fix::Condition::all_match;
@@ -34,10 +38,6 @@ sub emit {
 
     $perl;
 }
-
-=head1 NAME
-
-Catmandu::Fix::Condition::pica_match - Conditionals on PICA fields
 
 =head1 SYNOPSIS
    

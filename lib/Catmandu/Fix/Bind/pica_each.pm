@@ -1,5 +1,8 @@
 package Catmandu::Fix::Bind::pica_each;
 
+# ABSTRACT: a binder that loops over PICA fields
+# VERSION
+
 use Moo;
 use Catmandu::Util;
 
@@ -39,10 +42,6 @@ sub bind {
 }
 
 1;
-
-=head1 NAME
-
-Catmandu::Fix::Bind::list - a binder that loops over PICA fields
 
 =head1 SYNOPSIS
 
