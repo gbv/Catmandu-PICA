@@ -1,4 +1,4 @@
-requires 'Catmandu', '>= 0.9';
+requires 'Catmandu', '>= 0.94';
 requires 'XML::LibXML::Reader', '>= 2.0';
 
 # To get PICA via SRU
