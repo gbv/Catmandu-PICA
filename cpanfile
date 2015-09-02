@@ -1,4 +1,4 @@
-requires 'Catmandu', '>= 0.9';
+requires 'Catmandu', '>= 0.94';
 requires 'PICA::Data', '>= 0.22';
 
 # To get PICA via SRU

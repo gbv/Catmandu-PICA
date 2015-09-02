@@ -1,6 +1,7 @@
 Changelog for Catmandu-PICA
 
 {{$NEXT}}
+ - added pica_each and pica_match fixes
 
 0.15  2014-09-19 12:08:39 CEST
  - remove PICA::Data as independent module
