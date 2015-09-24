@@ -23,6 +23,7 @@ sub _build_parser {
     } elsif ( $type eq 'plain') {
         PICA::Parser::Plain->new( $self->fh );
     } elsif ( $type eq 'xml') {
+        $self->{encoding} = ':raw'; # set encoding to :raw to drop PerlIO layers, as required by libxml2
         PICA::Parser::XML->new( $self->fh );
     } else {
         die "unknown type: $type";
