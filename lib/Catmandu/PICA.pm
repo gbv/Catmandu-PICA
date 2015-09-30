@@ -46,7 +46,7 @@ introduction into Catmandu.
 
 =encoding utf8
 
-Johann Rolschewski, <rolschewski@gmail.com>
+Johann Rolschewski, <jorol@cpan.org>
 
 Jakob Voß <voss@gbv.de>
 
