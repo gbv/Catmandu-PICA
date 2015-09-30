@@ -4,7 +4,7 @@
       "Johann Rolschewski <rolschewski@gmail.com>"
    ],
    "dynamic_config" : 0,
-   "generated_by" : "Dist::Milla version v1.0.8, Dist::Zilla version 5.020, CPAN::Meta::Converter version 2.141520",
+   "generated_by" : "Dist::Zilla version 5.039, Dist::Milla version v1.0.15, CPAN::Meta::Converter version 2.150001",
    "license" : [
       "perl_5"
    ],
@@ -26,12 +26,12 @@
    "prereqs" : {
       "configure" : {
          "requires" : {
-            "Module::Build::Tiny" : "0.037"
+            "Module::Build::Tiny" : "0.039"
          }
       },
       "develop" : {
          "requires" : {
-            "Dist::Milla" : "v1.0.8",
+            "Dist::Milla" : "v1.0.15",
             "Test::Pod" : "1.41"
          }
       },
@@ -43,7 +43,7 @@
             "Catmandu::SRU" : "0.032"
          },
          "requires" : {
-            "Catmandu" : "0.9",
+            "Catmandu" : "0.94",
             "PICA::Data" : "0.22"
          }
       }
@@ -60,10 +60,12 @@
          "web" : "https://github.com/gbv/Catmandu-PICA"
       }
    },
-   "version" : "0.15",
+   "version" : "0.16",
    "x_contributors" : [
       "Jakob Voss <jakob@nichtich.de>",
-      "Jakob Voss <voss@gbv.de>"
+      "Jakob Voss <voss@gbv.de>",
+      "Johann Rolschewski <jorol@cpan.org>",
+      "julianladisch <julianladisch@users.noreply.github.com>"
    ]
 }
 

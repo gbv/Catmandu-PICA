@@ -1,7 +1,14 @@
 Changelog for Catmandu-PICA
 
 {{$NEXT}}
- - added pica_each and pica_match fixes
+
+0.16  2015-09-30 15:53:27 CEST
+ - travis infrastructure change
+ - Fix pica_each single execution bug
+ - ISSUE-31: drop PerlIO layer for XML importer
+ - ISSUE-26: Add feature pluck
+ - Deleted Perl 5.10 from travis.yml
+ - ISSUE-25: Add pica_each and pica_match fixes
 
 0.15  2014-09-19 12:08:39 CEST
  - remove PICA::Data as independent module

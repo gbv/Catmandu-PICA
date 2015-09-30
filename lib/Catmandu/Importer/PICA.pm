@@ -1,6 +1,6 @@
 package Catmandu::Importer::PICA;
 
-our $VERSION = '0.15';
+our $VERSION = '0.16';
 
 use Catmandu::Sane;
 use PICA::Parser::XML;

@@ -6,7 +6,7 @@ use PICA::Writer::Plain;
 use PICA::Writer::XML;
 use Moo;
 
-our $VERSION = '0.15';
+our $VERSION = '0.16';
 
 with 'Catmandu::Exporter';
 

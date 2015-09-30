@@ -8,8 +8,13 @@ Catmandu::PICA - Catmandu modules for working with PICA+ data
 
 # DESCRIPTION
 
-Catmandu::PICA provides methods to work with PICA+ data within the [Catmandu](https://metacpan.org/pod/Catmandu)
-framework.  See [Catmandu Introduction](https://github.com/LibreCat/Catmandu/wiki/Introduction) and [http://librecat.org/](http://librecat.org/) for an
+Catmandu::PICA provides methods to work with PICA data within the [Catmandu](https://metacpan.org/pod/Catmandu)
+framework.  
+
+See [PICA::Data](https://metacpan.org/pod/PICA::Data) for more information about PICA data format and record
+structure.
+
+See [Catmandu::Introduction](https://metacpan.org/pod/Catmandu::Introduction) and [http://librecat.org/](http://librecat.org/) for an
 introduction into Catmandu.
 
 # CATMANDU MODULES
@@ -21,7 +26,7 @@ introduction into Catmandu.
 
 # CONTRIBUTORS
 
-Johann Rolschewski, <rolschewski@gmail.com>
+Johann Rolschewski, <jorol@cpan.org>
 
 Jakob Voß <voss@gbv.de>
 
@@ -36,4 +41,4 @@ the same terms as Perl itself.
 
 # SEE ALSO
 
-This module is based on [PICA::Data](https://metacpan.org/pod/PICA::Data)
+[PICA::Data](https://metacpan.org/pod/PICA::Data), [Catmandu](https://metacpan.org/pod/Catmandu)
