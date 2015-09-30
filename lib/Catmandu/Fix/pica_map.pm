@@ -14,6 +14,7 @@ has record    => ( fix_opt => 1 );
 has split     => ( fix_opt => 1 );
 has join      => ( fix_opt => 1 );
 has value     => ( fix_opt => 1 );
+has pluck     => ( fix_opt => 1 );
 
 sub emit {
     my ( $self, $fixer ) = @_;
@@ -61,9 +62,27 @@ sub emit {
                 my $i = $fixer->generate_var;
                 my $add_subfields = sub {
                     my $start = shift;
-                    "for (my ${i} = ${start}; ${i} < \@{${var}}; ${i} += 2) {"
-                        . "if (${var}->[${i}] =~ ${subfield_regex_var}) {"
-                        . "push(\@{${v}}, ${var}->[${i} + 1]);" . "}" . "}";
+                    if ($self->pluck) {
+                        # Treat the subfield_regex as a hash index
+                        my $pluck = $fixer->generate_var;
+                        return 
+                        "my ${pluck}  = {};" .
+                        "for (my ${i} = ${start}; ${i} < \@{${var}}; ${i} += 2) {".
+                            "push(\@{ ${pluck}->{ ${var}->[${i}] } }, ${var}->[${i} + 1]);" .
+                        "}" .
+                        "for my ${i} (split('','${subfield_regex}')) { " .
+                            "push(\@{${v}}, \@{ ${pluck}->{${i}} }) if exists ${pluck}->{${i}};" .
+                        "}";
+                    }
+                    else {
+                        # Treat the subfield_regex as regex that needs to match the subfields
+                        return 
+                        "for (my ${i} = ${start}; ${i} < \@{${var}}; ${i} += 2) {".
+                            "if (${var}->[${i}] =~ /${subfield_regex}/) {".
+                                "push(\@{${v}}, ${var}->[${i} + 1]);".
+                            "}".
+                        "}";
+                    }
                 };
                 $perl .= $fixer->emit_declare_vars( $v, "[]" );
                 $perl .= $add_subfields->(2);
