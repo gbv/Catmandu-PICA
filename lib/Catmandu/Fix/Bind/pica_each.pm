@@ -1,6 +1,6 @@
 package Catmandu::Fix::Bind::pica_each;
 
-our $VERSION = '0.16';
+our $VERSION = '0.17';
 
 use Moo;
 use Catmandu::Util;

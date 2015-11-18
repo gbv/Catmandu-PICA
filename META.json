@@ -4,7 +4,7 @@
       "Johann Rolschewski <rolschewski@gmail.com>"
    ],
    "dynamic_config" : 0,
-   "generated_by" : "Dist::Zilla version 5.039, Dist::Milla version v1.0.15, CPAN::Meta::Converter version 2.150001",
+   "generated_by" : "Dist::Zilla version 5.041, Dist::Milla version v1.0.15, CPAN::Meta::Converter version 2.150005",
    "license" : [
       "perl_5"
    ],
@@ -15,18 +15,18 @@
    "name" : "Catmandu-PICA",
    "no_index" : {
       "directory" : [
-         "t",
-         "xt",
+         "eg",
+         "examples",
          "inc",
          "share",
-         "eg",
-         "examples"
+         "t",
+         "xt"
       ]
    },
    "prereqs" : {
       "configure" : {
          "requires" : {
-            "Module::Build::Tiny" : "0.039"
+            "Module::Build::Tiny" : "0.034"
          }
       },
       "develop" : {
@@ -43,7 +43,7 @@
             "Catmandu::SRU" : "0.032"
          },
          "requires" : {
-            "Catmandu" : "0.94",
+            "Catmandu" : "0.9504",
             "PICA::Data" : "0.22"
          }
       }
@@ -60,12 +60,12 @@
          "web" : "https://github.com/gbv/Catmandu-PICA"
       }
    },
-   "version" : "0.16",
+   "version" : "0.17",
    "x_contributors" : [
-      "Jakob Voss <jakob@nichtich.de>",
-      "Jakob Voss <voss@gbv.de>",
+      "E. Choroba <choroba@matfyz.cz>",
+      "Jakob Voß <jakob.voss@gbv.de>",
       "Johann Rolschewski <jorol@cpan.org>",
-      "julianladisch <julianladisch@users.noreply.github.com>"
+      "Julian Ladisch <julianladisch@users.noreply.github.com>"
    ]
 }
 

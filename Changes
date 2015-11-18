@@ -2,6 +2,11 @@ Changelog for Catmandu-PICA
 
 {{$NEXT}}
 
+0.17  2015-11-18 18:14:56 CET
+ - Require Catmandu version '0.9504' by E. Choroba;
+ - Remove outdated Makefile.PL 
+ - Add .mailmap
+
 0.16  2015-09-30 15:53:27 CEST
  - travis infrastructure change
  - Fix pica_each single execution bug
