@@ -1,8 +1,11 @@
 package Catmandu::Exporter::PICA;
+use strict;
+use warnings;
 
 use Catmandu::Sane;
 use PICA::Writer::Plus;
 use PICA::Writer::Plain;
+use PICA::Writer::Binary;
 use PICA::Writer::XML;
 use Moo;
 
@@ -20,6 +23,8 @@ sub _build_writer {
 
     if ( $type =~ /^(pica)?plus$/ ) {
         PICA::Writer::Plus->new( fh => $self->fh );
+    } elsif ( $type eq 'binary') {
+        PICA::Writer::Binary->new( $self->fh );
     } elsif ( $type eq 'plain') {
         PICA::Writer::Plain->new( fh => $self->fh );
     } elsif ( $type eq 'xml') {

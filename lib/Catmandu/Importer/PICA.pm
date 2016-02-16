@@ -1,4 +1,6 @@
 package Catmandu::Importer::PICA;
+use strict;
+use warnings;
 
 our $VERSION = '0.17';
 
@@ -6,6 +8,7 @@ use Catmandu::Sane;
 use PICA::Parser::XML;
 use PICA::Parser::Plus;
 use PICA::Parser::Plain;
+use PICA::Parser::Binary;
 use Moo;
 
 with 'Catmandu::Importer';
@@ -20,6 +23,8 @@ sub _build_parser {
 
     if ( $type =~ /^(pica)?plus$/ ) {
         PICA::Parser::Plus->new(  $self->fh );
+    } elsif ( $type eq 'binary') {
+        PICA::Parser::Binary->new( $self->fh );
     } elsif ( $type eq 'plain') {
         PICA::Parser::Plain->new( $self->fh );
     } elsif ( $type eq 'xml') {
@@ -82,8 +87,8 @@ C<fh>, etc.) the importer can be configured with the following parameters:
 
 Describes the PICA+ syntax variant. Supported values (case ignored) include the
 default value C<xml> for PicaXML, C<plain> for human-readable PICA+
-serialization (where C<$> is used as subfield indicator) and C<plus> or
-C<picaplus> for normalized PICA+.
+serialization (where C<$> is used as subfield indicator), C<plus> or
+C<picaplus> for normalized PICA+, and C<binary> for binary PICA+.
 
 =back
 
