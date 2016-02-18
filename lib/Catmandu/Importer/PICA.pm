@@ -9,6 +9,7 @@ use PICA::Parser::XML;
 use PICA::Parser::Plus;
 use PICA::Parser::Plain;
 use PICA::Parser::Binary;
+use PICA::Parser::PPXML;
 use Moo;
 
 with 'Catmandu::Importer';
@@ -30,6 +31,9 @@ sub _build_parser {
     } elsif ( $type eq 'xml') {
         $self->{encoding} = ':raw'; # set encoding to :raw to drop PerlIO layers, as required by libxml2
         PICA::Parser::XML->new( $self->fh );
+    } elsif ( $type =~ m/^p(ica)?p(plus)?xml$/) {
+        $self->{encoding} = ':raw'; # set encoding to :raw to drop PerlIO layers, as required by libxml2
+        PICA::Parser::PPXML->new( $self->fh );
     } else {
         die "unknown type: $type";
     }
@@ -88,7 +92,7 @@ C<fh>, etc.) the importer can be configured with the following parameters:
 Describes the PICA+ syntax variant. Supported values (case ignored) include the
 default value C<xml> for PicaXML, C<plain> for human-readable PICA+
 serialization (where C<$> is used as subfield indicator), C<plus> or
-C<picaplus> for normalized PICA+, and C<binary> for binary PICA+.
+C<picaplus> for normalized PICA+, C<binary> for binary PICA+ and C<ppxml> for the PICA+ XML variant of the DNB.
 
 =back
 
