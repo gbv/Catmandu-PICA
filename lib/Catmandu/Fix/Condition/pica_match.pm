@@ -1,6 +1,6 @@
 package Catmandu::Fix::Condition::pica_match;
 
-our $VERSION = '0.18';
+our $VERSION = '0.19';
 
 use Catmandu::Sane;
 use Catmandu::Fix::pica_map;
