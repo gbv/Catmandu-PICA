@@ -129,7 +129,7 @@ __END__
 
 =head1 NAME
 
-Catmandu::Fix::pica_map - copy mab values of one field to a new field
+Catmandu::Fix::pica_map - copy pica values of one field to a new field
 
 =head1 SYNOPSIS
 
@@ -145,8 +145,8 @@ Catmandu::Fix::pica_map - copy mab values of one field to a new field
     # Copy from field 028A subfields a and d to dc.creator hash joining them by ' '
     pica_map('028Aad','dcterms.creator', -join => ' ');
 
-    # Copy from field 028A with ocurrance subfields a and d to dc.contributor hash joining them by ' '
-    pica_map('028B[01]ad','dcterms.ccontributor', -join => ' ');
+    # Copy from field 028A with occurrence subfields a and d to dc.contributor hash joining them by ' '
+    pica_map('028B[01]ad','dcterms.contributor', -join => ' ');
 
 =head1 SEE ALSO
 
