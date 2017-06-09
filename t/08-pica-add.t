@@ -20,14 +20,11 @@ my $fixer = Catmandu::Fix->new(fixes => [
         'pica_add(new.encoding, 201U[02]0)',
         'pica_map("003@a", "ids", split:1)',
         'pica_map("201U[02]$0", "encoding")',
-        'set_array(foo, bar)',
+        'set_array(foo, bar, baz)',
         'pica_set(foo.$first, 101U$0)',
-        'pica_set(foo.$first, 201U[03]$0)',
         'pica_map(101U$0, what)',
-        'pica_map(201U[03]$0, new_what)',
-        'pica_set(foo, "001@$0")',
-        'pica_add(foo, 001@$0)',
-        'pica_map(001@$0, test)'
+        'pica_add(foo, 001@$01)',
+        'pica_map(001@$01, multi)'
 ]);
 my $importer = Catmandu::Importer::PICA->new(file => "./t/files/plain.pica", type=> "plain");
 my $records = $fixer->fix($importer)->to_array;
@@ -35,14 +32,14 @@ my $records = $fixer->fix($importer)->to_array;
 is_deeply $records->[0]->{'ids'}, [ ['1234', '4321'], ['5678'] ], '003@a added';
 is $records->[0]->{'encoding'}, 'utf16', '201U0 added';
 is $records->[0]->{'what'}, 'bar', '101U$0 set';
-is $records->[0]->{'test'}, undef, 'foo is not a string';
+is $records->[0]->{'multi'}, 'barbaz', 'added multiple subfields to 001@';
 
 my $thrower = Catmandu::Fix->new(fixes => [
         'set_array(foo, bar)',
-        'pica_add(foo.$first, 001@0a)'
+        'pica_add(foo.$first, 001@)'
 ]);
 
-throws_ok( sub {$thrower->fix($importer)->to_array}, qr/Can't use more than one subfield to add a value/,
+throws_ok( sub {$thrower->fix($importer)->to_array}, qr/At least one subfield is required for pica_add to field/,
       'add more than one subfield caught okay');
       
       

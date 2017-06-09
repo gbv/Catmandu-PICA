@@ -18,7 +18,8 @@ with 'Catmandu::Fix::SimpleGetValue';
 sub emit_value {
     my ( $self, $add_value, $fixer ) = @_;
 
-    my $perl = "if (is_string(${add_value})) {";
+    confess "At least one subfield is required for pica_add to field ". $self->pica_path
+        if length $self->pica_path < 5;
 
     my $record_key  = $fixer->emit_string( $self->record // 'record' );
     my $pica_path   = PICA::Path->new($self->pica_path);
@@ -32,12 +33,22 @@ sub emit_value {
 
     my ($field_regex, $occurrence_regex) = @$pica_path;
 
-    confess "Can't use more than one subfield to add a value. ". length $subfield
-        if length $subfield > 3;
+    $subfield   = $fixer->emit_string( $subfield );
+    $field      = $fixer->emit_string( $field );
+    $occurrence = $fixer->emit_string( $occurrence // '' );
 
-    $subfield    = $fixer->emit_string( substr($subfield, 1, 1) );
-    $field       = $fixer->emit_string( $field );
-    $occurrence  = $fixer->emit_string( $occurrence // '' );
+    my $subfields = $fixer->generate_var;
+    my $sf_data   =  $fixer->generate_var;
+    my $i         =  $fixer->generate_var;
+
+    my $perl = "if ( is_string(${add_value}) ) { ${add_value} = [ ${add_value} ] }; " .
+        "if (ref(${add_value}) eq 'ARRAY') {" .
+        $fixer->emit_declare_vars( $i, 0 ) .
+        $fixer->emit_declare_vars( $subfields ) .
+        $fixer->emit_declare_vars( $sf_data ) .
+        "\@${subfields} = split //, substr(${subfield}, 1, length(${subfield}) -2);" .
+        "\@${sf_data} = map { defined ${add_value}->[${i}] ? " .
+        "(\$_ => ${add_value}->[${i}++]) : () } \@${subfields};";
 
     my $field_regex_var    = $fixer->generate_var;
     $perl .= $fixer->emit_declare_vars( $field_regex_var, "qr{$field_regex}" );
@@ -62,13 +73,13 @@ sub emit_value {
                 if (defined $occurrence_regex) {
                     $perl .= "next if (!defined ${var}->[1] || ${var}->[1] !~ ${occurrence_regex_var});";
                 }
-                $perl .= "push \@{${var}}, (${subfield} => ${add_value}); ${added} = 1;";
+                $perl .= "push \@{${var}}, \@${sf_data}; ${added} = 1;";
             }
         );
     }
 
-    $perl .= "push(\@{ ${data}->{${record_key}} }, "
-          .  "[${field}, ${occurrence}, ${subfield} => ${add_value} ]) unless defined ${added}};";
+    $perl .= "push(\@{ ${data}->{${record_key}} }, " .
+        "[${field}, ${occurrence}, \@${sf_data} ]) unless defined ${added}};";
 }
 
 1;
@@ -76,22 +87,27 @@ __END__
 
 =head1 NAME
 
-Catmandu::Fix::pica_add - add new fields or subfields to record
+Catmandu::Fix::pica_add - add new subfields to record
 
 =head1 SYNOPSIS
 
     # Copy value of dc.identifier to PICA field 003A as subfield 0
     pica_add('dc.identifier', '003A0');
     
-    # same as above, but use another record path ('pica')
+    # Same as above, but use another record path ('pica')
     pica_add('dc.identifier', '003A0', record:'pica');
     
     # force the creation of a new field 003A
     pica_add('dc.identifier', '003A0', force_new:1);
+    
+    # Add multiple subfields
+    # "dc": {"subjects": ["foo", "bar"]}
+    pica_add('dc.subjects', '004Faf')
 
 =head1 DESCRIPTION
 
-This fix adds a subfield with value of PATH to the PICA field.
+This fix adds subfields with value of PATH to the PICA field. The value of PATH must be either
+a scalar or an array.
 
 If PICA field does not exist, it will be created.
 

@@ -77,9 +77,7 @@ Catmandu::Fix::pica_set - sets a new value to an existing subfield
 
 =head1 DESCRIPTION
 
-This fix adds a subfield with value of PATH to the PICA field.
-
-If PICA field does not exist, it will be created.
+This fix sets the value from PATH to a subfield defined through PICA_PATH.
 
 =head1 FUNCTIONS
 
@@ -92,8 +90,6 @@ If PICA field does not exist, it will be created.
 =item * record - alternative record key (default is 'record')
 
 =back
-
-
 
 =head1 SEE ALSO
 
