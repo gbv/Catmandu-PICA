@@ -31,6 +31,7 @@ sub emit_value {
 
     my $occurrence_regex_var;
     if (defined $occurrence_regex) {
+
         $occurrence_regex_var = $fixer->generate_var;
         $perl .= $fixer->emit_declare_vars( $occurrence_regex_var, "qr{$occurrence_regex}" );
     }

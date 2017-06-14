@@ -40,15 +40,18 @@ sub emit_value {
     my $subfields = $fixer->generate_var;
     my $sf_data   =  $fixer->generate_var;
     my $i         =  $fixer->generate_var;
+    my $value     =  $fixer->generate_var;
 
-    my $perl = "if ( is_string(${add_value}) ) { ${add_value} = [ ${add_value} ] }; " .
-        "if (ref(${add_value}) eq 'ARRAY') {" .
+    my $perl = $fixer->emit_declare_vars( $value ) .
+        "${value} = ${add_value};" .
+        "if ( is_string(${add_value}) ) { ${value} = [ ${value} ] }; " .
+        "if (ref(${value}) eq 'ARRAY') {" .
         $fixer->emit_declare_vars( $i, 0 ) .
         $fixer->emit_declare_vars( $subfields ) .
         $fixer->emit_declare_vars( $sf_data ) .
         "\@${subfields} = split //, substr(${subfield}, 1, length(${subfield}) -2);" .
-        "\@${sf_data} = map { defined ${add_value}->[${i}] ? " .
-        "(\$_ => ${add_value}->[${i}++]) : () } \@${subfields};";
+        "\@${sf_data} = map { defined ${value}->[${i}] ? " .
+        "(\$_ => ${value}->[${i}++]) : () } \@${subfields};";
 
     my $field_regex_var    = $fixer->generate_var;
     $perl .= $fixer->emit_declare_vars( $field_regex_var, "qr{$field_regex}" );
