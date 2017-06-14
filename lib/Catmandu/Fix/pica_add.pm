@@ -43,6 +43,7 @@ sub emit_value {
     my $value     =  $fixer->generate_var;
 
     my $perl = $fixer->emit_declare_vars( $value ) .
+        "if ( defined ${value} ) { ".
         "${value} = ${add_value};" .
         "if ( is_string(${value}) || ${value} eq '' ) { ${value} = [ ${value} ] }; " .
         "if (ref(${value}) eq 'ARRAY') { " .
@@ -82,7 +83,7 @@ sub emit_value {
     }
 
     $perl .= "push(\@{ ${data}->{${record_key}} }, " .
-        "[${field}, ${occurrence}, \@${sf_data} ]) unless defined ${added}};";
+        "[${field}, ${occurrence}, \@${sf_data} ]) unless defined ${added} } };";
 }
 
 1;
