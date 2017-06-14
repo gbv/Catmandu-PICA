@@ -43,7 +43,7 @@ sub emit_value {
     my $value     =  $fixer->generate_var;
 
     my $perl = $fixer->emit_declare_vars( $value ) .
-        "if ( defined ${value} ) { ".
+        "if ( defined ${add_value} ) { ".
         "${value} = ${add_value};" .
         "if ( is_string(${value}) || ${value} eq '' ) { ${value} = [ ${value} ] }; " .
         "if (ref(${value}) eq 'ARRAY') { " .
