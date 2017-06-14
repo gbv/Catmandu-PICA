@@ -44,8 +44,8 @@ sub emit_value {
 
     my $perl = $fixer->emit_declare_vars( $value ) .
         "${value} = ${add_value};" .
-        "if ( is_string(${add_value}) ) { ${value} = [ ${value} ] }; " .
-        "if (ref(${value}) eq 'ARRAY') {" .
+        "if ( is_string(${value}) || ${value} eq '' ) { ${value} = [ ${value} ] }; " .
+        "if (ref(${value}) eq 'ARRAY') { " .
         $fixer->emit_declare_vars( $i, 0 ) .
         $fixer->emit_declare_vars( $subfields ) .
         $fixer->emit_declare_vars( $sf_data ) .
