@@ -78,7 +78,7 @@ sub emit {
                         # Treat the subfield_regex as regex that needs to match the subfields
                         return 
                         "for (my ${i} = ${start}; ${i} < \@{${var}}; ${i} += 2) {".
-                            "if (${var}->[${i}] =~ /${subfield_regex}/) {".
+                            "if (${var}->[${i}] =~ ${subfield_regex_var}) {".
                                 "push(\@{${v}}, ${var}->[${i} + 1]);".
                             "}".
                         "}";
