@@ -6,7 +6,6 @@ use Catmandu::Sane;
 use Moo;
 use Catmandu::Fix::Has;
 use PICA::Path;
-use Carp qw(croak);
 
 has path      => ( fix_arg => 1 );
 has pica_path => ( fix_arg => 1 );
