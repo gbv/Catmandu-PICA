@@ -10,7 +10,6 @@ requires 'PICA::Data', '0.30';
 requires 'PICA::Parser', '0.585';
 requires 'PICA::Path', '0.31';
 requires 'Moo', '1.0';
-requires 'Carp', '0';
 
 # To get PICA via SRU
 recommends 'Catmandu::SRU', '>= 0.032';
