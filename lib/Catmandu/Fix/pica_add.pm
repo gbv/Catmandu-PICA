@@ -6,7 +6,7 @@ use Catmandu::Sane;
 use Moo;
 use Catmandu::Fix::Has;
 use PICA::Path;
-use Carp qw(confess);
+use Carp qw(croak);
 
 has path      => ( fix_arg => 1 );
 has pica_path => ( fix_arg => 1 );
@@ -18,9 +18,6 @@ with 'Catmandu::Fix::SimpleGetValue';
 sub emit_value {
     my ( $self, $add_value, $fixer ) = @_;
 
-    confess "At least one subfield is required for pica_add to field ". $self->pica_path
-        if length $self->pica_path < 5;
-
     my $record_key  = $fixer->emit_string( $self->record // 'record' );
     my $pica_path   = PICA::Path->new($self->pica_path);
 
@@ -30,6 +27,7 @@ sub emit_value {
             s/\./*/g;
             $_ } : undef
         } ($pica_path->[0], $pica_path->[1], $pica_path->[2]);
+
 
     my ($field_regex, $occurrence_regex) = @$pica_path;
 
@@ -43,7 +41,7 @@ sub emit_value {
     my $value     =  $fixer->generate_var;
 
     my $perl = $fixer->emit_declare_vars( $value ) .
-        "if ( defined ${add_value} ) { ".
+        "if ( defined ${add_value} && ${subfield} ne '[_A-Za-z0-9]') { ".
         "${value} = ${add_value};" .
         "if ( is_string(${value}) || ${value} eq '' ) { ${value} = [ ${value} ] }; " .
         "if (ref(${value}) eq 'ARRAY') { " .

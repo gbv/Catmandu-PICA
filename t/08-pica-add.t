@@ -8,6 +8,13 @@ use Catmandu;
 use Catmandu::Fix;
 use Catmandu::Importer::PICA;
 
+my $pkg;
+
+BEGIN {
+    $pkg = 'Catmandu::Fix::pica_add';
+    use_ok $pkg;
+}
+
 my $fixer = Catmandu::Fix->new(fixes => [
         'set_hash(new)',
         'set_field(new.id, 1234)',
@@ -39,15 +46,7 @@ is $records->[0]->{'encoding'}, 'utf16', '201U0 added';
 is $records->[0]->{'what'}, 'bar', '101U$0 set';
 is $records->[0]->{'multi'}, 'barbaz', 'added multiple subfields to 001@';
 is $records->[0]->{'encoding1'}, 'utf16', '201U[01]0 set';
-is $records->[0]->{'empty'}, '', 'empty value added';
+is $records->[0]->{'empty'}, '', 'empty value added'; 
 
-my $thrower = Catmandu::Fix->new(fixes => [
-        'set_array(foo, bar)',
-        'pica_add(foo.$first, 001@)'
-]);
 
-throws_ok( sub {$thrower->fix($importer)->to_array}, qr/At least one subfield is required for pica_add to field/,
-      'add more than one subfield caught okay');
-      
-      
 done_testing;
