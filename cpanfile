@@ -5,7 +5,7 @@ on 'test', sub {
   requires 'IO::File' , '1.14';
 };
 
-requires 'Catmandu', '0.9504';
+requires 'Catmandu', '1.0601';
 requires 'PICA::Data', '0.30';
 requires 'PICA::Parser', '0.585';
 requires 'PICA::Path', '0.31';
