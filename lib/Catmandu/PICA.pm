@@ -50,6 +50,8 @@ Johann Rolschewski, <jorol@cpan.org>
 
 Jakob Voß <voss@gbv.de>
 
+Carsten Klee <klee@cpan.org>
+
 =head1 COPYRIGHT
 
 Copyright 2014- Johann Rolschewski and Jakob Voss
