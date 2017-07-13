@@ -1,6 +1,6 @@
 package Catmandu::Importer::SRU::Parser::picaxml;
 
-our $VERSION = '0.20';
+our $VERSION = '0.21';
 
 use Moo;
 use PICA::Parser::XML;
