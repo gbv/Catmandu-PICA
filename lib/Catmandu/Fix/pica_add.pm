@@ -1,6 +1,6 @@
 package Catmandu::Fix::pica_add;
 
-our $VERSION = '0.21';
+our $VERSION = '0.22';
 
 use Catmandu::Sane;
 use Moo;

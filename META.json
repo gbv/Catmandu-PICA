@@ -45,9 +45,9 @@
          "requires" : {
             "Catmandu" : "1.0601",
             "Moo" : "1.0",
-            "PICA::Data" : "0.30",
+            "PICA::Data" : "0.33",
             "PICA::Parser" : "0.585",
-            "PICA::Path" : "0.31"
+            "perl" : "v5.10.0"
          }
       },
       "test" : {
@@ -55,7 +55,8 @@
             "File::Temp" : "0.2304",
             "IO::File" : "1.14",
             "Test::Exception" : "0.43",
-            "Test::More" : "1.001003"
+            "Test::More" : "1.001003",
+            "Test::XML" : "0.08"
          }
       }
    },
@@ -71,7 +72,7 @@
          "web" : "https://github.com/gbv/Catmandu-PICA"
       }
    },
-   "version" : "0.21",
+   "version" : "0.22",
    "x_contributors" : [
       "Carsten Klee <carsten.klee@sbb.spk-berlin.de>",
       "Carsten Klee <cKlee@users.noreply.github.com>",
