@@ -40,6 +40,11 @@ introduction into Catmandu.
 
 =item * L<Catmandu::Fix::pica_map>
 
+=item * L<Catmandu::Fix::pica_add>
+
+=item * L<Catmandu::Fix::pica_set>
+
+
 =back
 
 =head1 CONTRIBUTORS
