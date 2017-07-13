@@ -8,7 +8,7 @@ use PICA::Parser::XML;
 sub parse {
     my ( $self, $record ) = @_;
 
-    my $xml = $record->{recordData};
+    my $xml = $record->{recordData}->toString();
     my $parser = PICA::Parser::XML->new( $xml ); 
 
     return $parser->next;
