@@ -23,12 +23,14 @@ introduction into Catmandu.
 - [Catmandu::Exporter::PICA](https://metacpan.org/pod/Catmandu::Exporter::PICA)
 - [Catmandu::Importer::SRU::Parser::picaxml](https://metacpan.org/pod/Catmandu::Importer::SRU::Parser::picaxml)
 - [Catmandu::Fix::pica\_map](https://metacpan.org/pod/Catmandu::Fix::pica_map)
+- [Catmandu::Fix::pica\_add](https://metacpan.org/pod/Catmandu::Fix::pica_add)
+- [Catmandu::Fix::pica\_set](https://metacpan.org/pod/Catmandu::Fix::pica_set)
 
 # CONTRIBUTORS
 
-Johann Rolschewski, <jorol@cpan.org>
+Johann Rolschewski, &lt;jorol@cpan.org>
 
-Jakob Voß <voss@gbv.de>
+Jakob Vo� &lt;voss@gbv.de>
 
 # COPYRIGHT
 
