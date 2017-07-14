@@ -28,9 +28,11 @@ introduction into Catmandu.
 
 # CONTRIBUTORS
 
-Johann Rolschewski, &lt;jorol@cpan.org>
+Johann Rolschewski, <jorol@cpan.org>
 
-Jakob Vo� &lt;voss@gbv.de>
+Jakob Voß <voss@gbv.de>
+
+Carsten Klee <klee@cpan.org>
 
 # COPYRIGHT
 
