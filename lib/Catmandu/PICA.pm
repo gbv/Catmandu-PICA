@@ -25,24 +25,30 @@ framework.
 See L<PICA::Data> for more information about PICA data format and record
 structure.
 
-See L<Catmandu::Introduction> and L<http://librecat.org/> for an
+See L<Catmandu::Introduction> and L<http://librecat.org/Catmandu> for an
 introduction into Catmandu.
 
 =head1 CATMANDU MODULES
 
 =over
 
-=item * L<Catmandu::Importer::PICA>
-
 =item * L<Catmandu::Exporter::PICA>
 
-=item * L<Catmandu::Importer::SRU::Parser::picaxml>
+=item * L<Catmandu::Fix::Bind::pica_each>
 
-=item * L<Catmandu::Fix::pica_map>
+=item * L<Catmandu::Fix::Condition::pica_match>
 
 =item * L<Catmandu::Fix::pica_add>
 
+=item * L<Catmandu::Fix::pica_map>
+
 =item * L<Catmandu::Fix::pica_set>
+
+=item * L<Catmandu::Importer::PICA>
+
+=item * L<Catmandu::Importer::SRU::Parser::picaxml>
+
+=item * L<Catmandu::Importer::SRU::Parser::ppxml>
 
 =back
 
@@ -50,7 +56,7 @@ introduction into Catmandu.
 
 =encoding utf8
 
-Johann Rolschewski, <jorol@cpan.org>
+Johann Rolschewski <jorol@cpan.org>
 
 Jakob Voß <voss@gbv.de>
 
