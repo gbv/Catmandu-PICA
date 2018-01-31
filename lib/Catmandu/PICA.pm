@@ -50,6 +50,7 @@ introduction into Catmandu.
 
 =item * L<Catmandu::Importer::SRU::Parser::ppxml>
 
+=item * L<Catmandu::Validator::PICA>
 =back
 
 =head1 CONTRIBUTORS
