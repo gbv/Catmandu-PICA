@@ -5,6 +5,8 @@ our $VERSION = '0.24';
 1;
 __END__
 
+=encoding utf-8
+
 =head1 NAME
 
 Catmandu::PICA - Catmandu modules for working with PICA+ data
@@ -51,11 +53,10 @@ introduction into Catmandu.
 =item * L<Catmandu::Importer::SRU::Parser::ppxml>
 
 =item * L<Catmandu::Validator::PICA>
+
 =back
 
 =head1 CONTRIBUTORS
-
-=encoding utf8
 
 Johann Rolschewski <jorol@cpan.org>
 
