@@ -14,21 +14,25 @@ framework.
 See [PICA::Data](https://metacpan.org/pod/PICA::Data) for more information about PICA data format and record
 structure.
 
-See [Catmandu::Introduction](https://metacpan.org/pod/Catmandu::Introduction) and [http://librecat.org/](http://librecat.org/) for an
+See [Catmandu::Introduction](https://metacpan.org/pod/Catmandu::Introduction) and [http://librecat.org/Catmandu](http://librecat.org/Catmandu) for an
 introduction into Catmandu.
 
 # CATMANDU MODULES
 
-- [Catmandu::Importer::PICA](https://metacpan.org/pod/Catmandu::Importer::PICA)
 - [Catmandu::Exporter::PICA](https://metacpan.org/pod/Catmandu::Exporter::PICA)
-- [Catmandu::Importer::SRU::Parser::picaxml](https://metacpan.org/pod/Catmandu::Importer::SRU::Parser::picaxml)
-- [Catmandu::Fix::pica\_map](https://metacpan.org/pod/Catmandu::Fix::pica_map)
+- [Catmandu::Fix::Bind::pica\_each](https://metacpan.org/pod/Catmandu::Fix::Bind::pica_each)
+- [Catmandu::Fix::Condition::pica\_match](https://metacpan.org/pod/Catmandu::Fix::Condition::pica_match)
 - [Catmandu::Fix::pica\_add](https://metacpan.org/pod/Catmandu::Fix::pica_add)
+- [Catmandu::Fix::pica\_map](https://metacpan.org/pod/Catmandu::Fix::pica_map)
 - [Catmandu::Fix::pica\_set](https://metacpan.org/pod/Catmandu::Fix::pica_set)
+- [Catmandu::Importer::PICA](https://metacpan.org/pod/Catmandu::Importer::PICA)
+- [Catmandu::Importer::SRU::Parser::picaxml](https://metacpan.org/pod/Catmandu::Importer::SRU::Parser::picaxml)
+- [Catmandu::Importer::SRU::Parser::ppxml](https://metacpan.org/pod/Catmandu::Importer::SRU::Parser::ppxml)
+- [Catmandu::Validator::PICA](https://metacpan.org/pod/Catmandu::Validator::PICA)
 
 # CONTRIBUTORS
 
-Johann Rolschewski, <jorol@cpan.org>
+Johann Rolschewski <jorol@cpan.org>
 
 Jakob Voß <voss@gbv.de>
 
