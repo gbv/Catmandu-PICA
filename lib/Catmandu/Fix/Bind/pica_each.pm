@@ -3,11 +3,15 @@ package Catmandu::Fix::Bind::pica_each;
 our $VERSION = '0.25';
 
 use Moo;
+use Catmandu::Sane;
 use Catmandu::Util;
+use Catmandu::Fix::Has;
 
 with 'Catmandu::Fix::Bind', 'Catmandu::Fix::Bind::Group';
 
-has done => (is => 'ro');
+has done      => (is => 'ro');
+has pica_path => (fix_arg => 1, default => sub {'....'});
+has var       => (fix_opt => 1);
 
 sub unit {
     my ($self,$data) = @_;
@@ -21,6 +25,11 @@ sub bind {
     return $mvar if $self->done;
 
     my $rows = $mvar->{record} // [];
+   # p $rows;
+
+    unless ($self->pica_path eq '....') {
+        @$rows = grep { $_->[0] eq $self->pica_path } @{$rows};
+    } 
 
     my @new = ();
 
@@ -28,9 +37,18 @@ sub bind {
 
         $mvar->{record} = [$row];
 
+        if ($self->var) {
+            $mvar->{$self->var} = $row;
+        }
+
+
         my $fixed = $code->($mvar);
 
         push @new , @{$fixed->{record}} if defined($fixed) && exists $fixed->{record};
+
+        if ($self->var) {
+            delete $mvar->{$self->var};
+        }
     }
 
     $mvar->{record} = \@new if exists $mvar->{record};
@@ -59,6 +77,14 @@ Catmandu::Fix::Bind::pica_each - a binder that loops over PICA fields
         if pica_match("041A",".*")
             reject()
         end
+    end
+
+    do pica_each("1...")
+        # process only level 1 fields
+    end
+
+    do pica_each(var:this)
+        # temporary varibale this contains the current element
     end
 
 =head1 DESCRIPTION

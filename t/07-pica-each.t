@@ -29,6 +29,16 @@ my $fixer = Catmandu::Fix->new(fixes => [q|
 			add_field(is_bogus,true)
 		end
 	end
+	do pica_each('010@',var:this)
+		if all_match(this.0,'010@')
+          add_field(from_var,true)
+        end
+	end
+	do pica_each('010@',var:this)
+		if all_match(this.0,'001U')
+          add_field(from_var2,true)
+        end
+	end
 |]);
 
 
@@ -40,5 +50,7 @@ ok exists $record->{record}, 'created a PICA record';
 is $record->{is_ger}, 'true', 'created is_ger tag';
 is $record->{has_encoding}, 'true', 'created has_encoding tag';
 isnt $record->{is_bogus}, 'true', 'not created is_bogus tag';
+is $record->{from_var}, 'true', 'created from_var tag';
+isnt $record->{from_var2}, 'true', 'not created from_var tag';
 
 done_testing;
