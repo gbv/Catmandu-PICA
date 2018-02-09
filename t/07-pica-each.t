@@ -29,18 +29,17 @@ my $fixer = Catmandu::Fix->new(fixes => [q|
 			add_field(is_bogus,true)
 		end
 	end
-	do pica_each('010@',var:this)
-		if all_match(this.0,'010@')
+	do pica_each('010@')
+		if all_match(record.0.0,'010@')
           add_field(from_var,true)
         end
 	end
-	do pica_each('010@',var:this)
-		if all_match(this.0,'001U')
+	do pica_each('010@')
+		if all_match(record.0.0,'010U')
           add_field(from_var2,true)
         end
 	end
 |]);
-
 
 
 my $importer = Catmandu::Importer::PICA->new( file => './t/files/picaplus.dat', type => "PLUS" );
