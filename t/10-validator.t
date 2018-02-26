@@ -19,13 +19,21 @@ my $record = [ [ '021A', undef, a => 'title' ] ];
 
 check($record);
 push @$record, $record->[0];
-check($record, { tag => '021A', message => 'field is not repeatable', unique => 1 });
+check($record, {
+    tag => '021A',
+    message => 'field 021A is not repeatable',
+    repeated => 1
+});
 
-my $schema = { fields => { '021A' => { unique => 1 } } };
+my $schema = { fields => { '021A' => { repeatable => 0 } } };
 
 foreach ( ($schema, PICA::Schema->new($schema)) ) {
     $validator = Catmandu::Validator::PICA->new( schema => $_ );
-    check($record, { tag => '021A', message => 'field is not repeatable', unique => 1 });
+    check($record, {
+        tag => '021A',
+        message => 'field 021A is not repeatable',
+        repeated => 1
+    });
 }
 
 
