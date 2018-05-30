@@ -1,6 +1,8 @@
 Changelog for Catmandu-PICA
 
 {{$NEXT}}
+
+0.26  2018-05-30 20:14:10 CEST
  - fix failing test caused by new release of PICA::Data
  - make second argument of pica_match optional 
 
