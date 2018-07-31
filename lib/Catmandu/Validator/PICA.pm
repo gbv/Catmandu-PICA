@@ -3,7 +3,6 @@ use Catmandu::Sane;
 use Catmandu::Util qw(:io :is :check);
 use PICA::Schema;
 use Moo;
-use DDP;
 
 our $VERSION = '0.26';
 
