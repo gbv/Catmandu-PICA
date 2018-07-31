@@ -49,8 +49,8 @@ has options => (
             allow_deprecated_subfields => $_[0]->allow_deprecated_subfields,
             allow_deprecated_codes     => $_[0]->allow_deprecated_codes,
             allow_deprecated           => $_[0]->allow_deprecated,
-            ignore_subfield_order      => $_[0]->ignore_deprecated_subfields,
-            ignore_subfields           => $_[0]->ignore_deprecated_subfields,
+            ignore_subfield_order      => $_[0]->ignore_subfield_order,
+            ignore_subfields           => $_[0]->ignore_subfields,
         }
     },
 );
