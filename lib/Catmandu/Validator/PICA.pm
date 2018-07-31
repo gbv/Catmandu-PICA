@@ -27,22 +27,30 @@ has schema => (
     }
 );
 
-has ignore_unknown_fields => ( is => 'ro' );
-has ignore_unknown_subfields => ( is => 'ro' );
-has ignore_subfield_order => ( is => 'ro' );
-has ignore_deprecated_fields => ( is => 'ro' );
-has ignore_deprecated_subfields => ( is => 'ro' );
+has ignore_unknown_fields      => ( is => 'ro' );
+has ignore_unknown_subfields   => ( is => 'ro' );
+has ignore_unknown             => ( is => 'ro' );
+has allow_deprecated_fields    => ( is => 'ro' );
+has allow_deprecated_subfields => ( is => 'ro' );
+has allow_deprecated_codes     => ( is => 'ro' );
+has allow_deprecated           => ( is => 'ro' );
+has ignore_subfield_order      => ( is => 'ro' );
+has ignore_subfields           => ( is => 'ro' );
 
 has options => (
     is => 'ro',
     init_arg => undef,
     builder => sub {
         return {
-            ignore_unknown_fields       => $_[0]->ignore_unknown_fields,
-            ignore_unknown_subfields    => $_[0]->ignore_unknown_subfields,
-            ignore_subfield_order       => $_[0]->ignore_subfield_order,
-            ignore_deprecated_fields    => $_[0]->ignore_deprecated_fields,
-            ignore_deprecated_subfields => $_[0]->ignore_deprecated_subfields,
+            ignore_unknown_fields      => $_[0]->ignore_unknown_fields,
+            ignore_unknown_subfields   => $_[0]->ignore_unknown_subfields,
+            ignore_unknown             => $_[0]->ignore_unknown,
+            allow_deprecated_fields    => $_[0]->allow_deprecated_fields,
+            allow_deprecated_subfields => $_[0]->allow_deprecated_subfields,
+            allow_deprecated_codes     => $_[0]->allow_deprecated_codes,
+            allow_deprecated           => $_[0]->allow_deprecated,
+            ignore_subfield_order      => $_[0]->ignore_deprecated_subfields,
+            ignore_subfields           => $_[0]->ignore_deprecated_subfields,
         }
     },
 );
@@ -108,17 +116,33 @@ Don't report fields not included in the schema.
 
 Don't report subfields not included in the schema.
 
+=item ignore_unknown
+
+Don't report fields and subfields not included in the schema.
+
+=item allow_deprecated_fields
+
+Don't report deprecated fields.
+
+=item allow_deprecated_subfields
+
+Don't report deprecated subfields.
+
+=item allow_deprecated_codes
+
+Don't report deprecated codes.
+
+=item allow_deprecated
+
+Don't report deprecated fields, subfields, and codes.
+
 =item ignore_subfield_order
 
-Don't report subfields in wrong order.
+Don't report errors resulting on wrong subfield order.
 
-=item ignore_deprecated_fields
+=item ignore_subfields
 
-Don't report fields marked as deprecated in the schema.
-
-=item ignore_deprecated_subfields
-
-Don't report subfields marked as deprecated in the schema.
+Don't check subfields at all.
 
 =back
 
