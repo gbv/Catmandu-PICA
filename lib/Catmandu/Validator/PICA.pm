@@ -5,7 +5,7 @@ use PICA::Schema;
 use Moo;
 use DDP;
 
-our $VERSION = '0.25';
+our $VERSION = '0.26';
 
 with qw(Catmandu::Validator);
 
