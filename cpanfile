@@ -10,4 +10,4 @@ requires 'perl', '5.12.0';
 requires 'Catmandu', '1.0601';
 requires 'PICA::Data', '1.00';
 requires 'Moo', '1.0';
-requires 'Catmandu::SRU', '0.41';
+requires 'Catmandu::SRU', '0.427';
