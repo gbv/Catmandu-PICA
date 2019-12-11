@@ -1,6 +1,7 @@
 Changelog for Catmandu-PICA
 
 {{$NEXT}}
+ - align pica_map with marc_map
 
 1.00  2019-10-01 19:57:50 CEST
  - fix SRU test (#67)
