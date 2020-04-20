@@ -37,14 +37,16 @@ sub _build_fixer {
     sub {
         my $data = $_[0];
         my $matches = pica_match( $data, $self->pica_path, %opt );
+        if ( defined $matches ) {
+            $matches = [$matches]
+                if !ref($matches) || ( $opt{split} && !$opt{force_array} );
+            while (@$matches) {
+                $data = $creator->( $data, shift @$matches );
+            }
 
-        $matches = [$matches] if !ref($matches) || ($opt{split} && !$opt{force_array});
-        while (@$matches) {
-            $data = $creator->( $data, shift @$matches );
         }
         return $data;
         }
-
 }
 
 1;

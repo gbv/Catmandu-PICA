@@ -369,4 +369,19 @@ note('Map several PICA fields to one field');
     );
 }
 
+note('Check for empty return values');
+
+{
+    my $fixer = Catmandu::Fix->new(
+        fixes => [
+            'pica_map(004A, string)',
+            'pica_map(004A, array, split:1)',
+            'remove_field(record)'
+        ]
+    );
+    my $record = $fixer->fix( get_record() );
+    ok( !exists $record->{string} );
+    ok( !exists $record->{array} );
+}
+
 done_testing();
