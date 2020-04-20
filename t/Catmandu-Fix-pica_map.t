@@ -384,4 +384,23 @@ note('Check for empty return values');
     ok( !exists $record->{array} );
 }
 
+note('Repeated field split pluck');
+
+{
+    my $fixer = Catmandu::Fix->new(
+        fixes => [
+            'pica_map(099Aba, pluck, split:1, pluck:1)',
+            'remove_field(record)'
+        ]
+    );
+    my $record = $fixer->fix(
+        {   record => [
+                [ '099A', '', 'a', 'A', 'b', 'B' ],
+                [ '099A', '', 'b', 'B', 'a', 'A' ]
+            ]
+        }
+    );
+    is_deeply( $record->{pluck}, [ 'B', 'A', 'B', 'A' ] )
+}
+
 done_testing();
