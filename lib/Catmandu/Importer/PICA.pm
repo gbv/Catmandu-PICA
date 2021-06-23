@@ -37,7 +37,8 @@ sub generator {
     my ($self) = @_;
 
     sub {
-        return $self->parser->next();
+        my $next = $self->parser->next;
+        return $next ? {%$next} : undef;
     };
 }
 
