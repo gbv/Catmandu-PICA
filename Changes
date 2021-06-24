@@ -1,6 +1,8 @@
 Changelog for Catmandu-PICA
 
 {{$NEXT}}
+
+1.05  2021-06-24 12:21:35 CEST
   - Update PICA::Data dependency to fix failing test
   - Bump requirement to perl 5.14 at least
 
