@@ -4,7 +4,7 @@ Catmandu::PICA - Catmandu modules for working with PICA+ data
 
 [![Linux build status](https://github.com/gbv/Catmandu-PICA/actions/workflows/linux.yml/badge.svg)](https://github.com/gbv/Catmandu-PICA/actions/workflows/linux.yml)
 [![Windows Build status](https://ci.appveyor.com/api/projects/status/myyyxpobr8kn6aby?svg=true)](https://ci.appveyor.com/project/nichtich/catmandu-pica)
-[![Coverage Status](https://coveralls.io/repos/gbv/Catmandu-PICA/badge.svg?branch=master)](https://coveralls.io/r/gbv/Catmandu-PICA?branch=master)
+[![Coverage Status](https://coveralls.io/repos/gbv/Catmandu-PICA/badge.svg?branch=main)](https://coveralls.io/r/gbv/Catmandu-PICA?branch=main)
 [![Kwalitee Score](http://cpants.cpanauthors.org/dist/Catmandu-PICA.png)](http://cpants.cpanauthors.org/dist/Catmandu-PICA)
 
 # DESCRIPTION
