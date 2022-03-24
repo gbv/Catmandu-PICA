@@ -1,6 +1,7 @@
 Changelog for Catmandu-PICA
 
 {{$NEXT}}
+   - Support generic PICA writer
 
 1.07 2021-09-07T08:50:20Z
   - Fix broken SRU importer for ppxml format
