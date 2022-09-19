@@ -62,9 +62,10 @@ can be configured with
 
 =item C<type>
 
-Serialization type as described at L<Catmandu::Importer>. In addition to C<xml>
-(default), C<plain>, C<plus>, C<picaplus>, C<binary> and C<ppxml> the type
-C<generic> can be used to further control output format.
+Serialization type as described at L<Catmandu::Importer>. Supports C<xml>
+(default), C<plain>, C<import>, C<plus>, C<picaplus>, C<binary>, and C<ppxml>.
+
+The type C<generic> can be used to further control output format with options:
 
 =item C<subfield_indicator>
 
