@@ -1,6 +1,7 @@
 Changelog for Catmandu-PICA
 
 {{$NEXT}}
+   - Support writing annotated PICA
 
 1.08 2022-03-24T08:32:53Z
    - Support generic PICA writer

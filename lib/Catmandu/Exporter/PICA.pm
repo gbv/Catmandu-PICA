@@ -15,15 +15,17 @@ has subfield_indicator => ( is => 'rw', default => sub { '$' } );
 has field_separator    => ( is => 'rw', default => sub { "\n" } );
 has record_separator   => ( is => 'rw', default => sub { "\n" } );
 has writer             => ( is => 'lazy' );
+has annotate           => ( is => 'rw' );
 
 sub _build_writer {
     my ($self) = @_;
     pica_writer(
         $self->type,
-        fh => $self->fh,
-        us => $self->subfield_indicator,
-        rs => $self->field_separator,
-        gs => $self->record_separator,
+        fh       => $self->fh,
+        us       => $self->subfield_indicator,
+        rs       => $self->field_separator,
+        gs       => $self->record_separator,
+        annotate => $self->annotate,
     );
 }
 
@@ -66,6 +68,10 @@ Serialization type as described at L<Catmandu::Importer>. Supports C<xml>
 (default), C<plain>, C<import>, C<plus>, C<picaplus>, C<binary>, and C<ppxml>.
 
 The type C<generic> can be used to further control output format with options:
+
+=item C<annotate>
+
+Include field annotations to write annotated PICA format (e.g. PICA Patch format).
 
 =item C<subfield_indicator>
 
