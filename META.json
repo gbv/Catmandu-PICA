@@ -4,7 +4,7 @@
       "- Johann Rolschewski and Jakob Voss"
    ],
    "dynamic_config" : 0,
-   "generated_by" : "Minilla/v3.1.11, CPAN::Meta::Converter version 2.150010",
+   "generated_by" : "Minilla/v3.1.15, CPAN::Meta::Converter version 2.150010",
    "license" : [
       "perl_5"
    ],
@@ -45,7 +45,7 @@
             "Catmandu" : "1.20",
             "Catmandu::SRU" : "0.427",
             "Moo" : "1.0",
-            "PICA::Data" : "2.02",
+            "PICA::Data" : "2.03",
             "perl" : "v5.14.1"
          }
       },
@@ -67,11 +67,11 @@
       "homepage" : "https://github.com/gbv/Catmandu-PICA",
       "repository" : {
          "type" : "git",
-         "url" : "git://github.com/gbv/Catmandu-PICA.git",
+         "url" : "https://github.com/gbv/Catmandu-PICA.git",
          "web" : "https://github.com/gbv/Catmandu-PICA"
       }
    },
-   "version" : "1.08",
+   "version" : "1.09",
    "x_contributors" : [
       "Carsten Klee <klee@cpan.org>",
       "E. Choroba <choroba@matfyz.cz>",
@@ -80,6 +80,6 @@
       "Johann Rolschewski <jorol@cpan.org>",
       "julianladisch <julianladisch@users.noreply.github.com>"
    ],
-   "x_serialization_backend" : "JSON::PP version 4.04",
+   "x_serialization_backend" : "JSON::PP version 4.06",
    "x_static_install" : 1
 }
