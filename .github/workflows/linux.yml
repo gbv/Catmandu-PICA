@@ -21,8 +21,9 @@ jobs:
         - '5.26'
         - '5.28'
         - '5.30'
+        - '5.32'
         include:
-          - perl-version: '5.32'
+          - perl-version: '5.34'
             os: ubuntu-latest
             release-test: true
             coverage: true
@@ -38,7 +39,7 @@ jobs:
       run: |
         cpanm -n Perl::Tidy Test::Code::TidyAll Test::Perl::Critic
         cpanm -n --installdeps --with-develop .
-        prove -lr xt
+        prove -lr t
     - name: Run tests (no coverage)
       if: ${{ !matrix.coverage }}
       run: prove -lr t
