@@ -1,6 +1,7 @@
 Changelog for Catmandu-PICA
 
 {{$NEXT}}
+   - Quick fix to avoid failing test (see #79 for details).
 
 1.09 2022-09-19T08:41:44Z
    - Support writing annotated PICA
