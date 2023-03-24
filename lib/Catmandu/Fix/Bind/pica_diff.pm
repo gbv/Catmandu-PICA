@@ -15,18 +15,22 @@ sub bind {
 
     my $ppn = pica_fields( $data->{record}, '003@' );
 
-    # TODO: pica_fields should do a copy
+    # TODO: $data->pica_fields should do, will be fixed in PICA-Data 2.07
     my $before = [ map { [@$_] } @{ $data->{record} } ];
 
     $code->($data);
-    $data->{record} = pica_diff( $before, $data->{record} );
+    my $diff   = pica_diff( $before, $data->{record} );
+    my $fields = [ map { [@$_] } @{ $diff->{record} } ];
 
     # Add record identifier
-    if ( @{ $data->{record}{record} } && @$ppn ) {
-        pica_annotation( $ppn->[0], ' ' );
-        unshift @{ $data->{record}{record} }, @$ppn;
+    if (@$fields) {
+        if ( $fields->[0][0] =~ /^0/ && @$ppn ) {
+            pica_annotation( $ppn->[0], ' ' );
+            unshift @$fields, @$ppn;
+        }
     }
 
+    $data->{record} = $fields;
     return $data;
 }
 
@@ -47,6 +51,10 @@ Catmandu::Fix::Bind::pica_diff - a binder that tracks changes in PICA records
 =head1 DESCRIPTION
 
 This binder replaces a record with a L<PICA Patch|https://format.gbv.de/pica/patch>
-record of changes applied to the original record.
+record of changes applied to the original record. If the record is not changed inside
+the C<do pica_diff()> section, the result will be an empty record.
+
+The original record must be limited to fields of one level. Field C<003@> is included
+in the resulting patch record for level 0, if found.
 
 =cut
