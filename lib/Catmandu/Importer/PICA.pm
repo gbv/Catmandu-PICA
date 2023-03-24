@@ -37,8 +37,11 @@ sub generator {
     my ($self) = @_;
 
     sub {
-        my $next = $self->parser->next;
-        return $next ? {%$next} : undef;
+        my $next = $self->parser->next || return;
+
+        # Catmandu does not like blessed objects/arrays
+        $next->{record} = [ map { [@$_] } @{ $next->{record} } ];
+        return {%$next};
     };
 }
 

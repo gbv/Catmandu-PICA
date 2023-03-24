@@ -18,9 +18,7 @@ BEGIN {
 }
 require_ok $pkg;
 
-# FIXME: https://github.com/gbv/Catmandu-PICA/issues/79
-SKIP: {
-    skip "PICA::Data 2.06 not _fully_ compatible with Catmandu";
+{
     my $fixer = Catmandu::Fix->new(
         fixes => [q|
     do pica_each()
