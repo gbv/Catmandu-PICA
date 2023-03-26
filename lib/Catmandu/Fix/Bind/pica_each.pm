@@ -7,6 +7,7 @@ use Catmandu::Sane;
 use Catmandu::Util;
 use Catmandu::Fix::Has;
 use PICA::Path;
+use Scalar::Util 'reftype';
 
 with 'Catmandu::Fix::Bind', 'Catmandu::Fix::Bind::Group';
 
@@ -25,6 +26,7 @@ sub unit {
 
 sub bind {
     my ( $self, $data, $code ) = @_;
+    return if reftype( $data->{record} ) ne 'ARRAY';
 
     return $data if $self->done;
 

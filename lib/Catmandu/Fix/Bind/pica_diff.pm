@@ -11,7 +11,7 @@ with 'Catmandu::Fix::Bind', 'Catmandu::Fix::Bind::Group';
 
 sub bind {
     my ( $self, $data, $code ) = @_;
-    return unless reftype( $data->{record} ) eq 'ARRAY';
+    return if reftype( $data->{record} ) ne 'ARRAY';
 
     my $ppn = pica_fields( $data->{record}, '003@' );
 

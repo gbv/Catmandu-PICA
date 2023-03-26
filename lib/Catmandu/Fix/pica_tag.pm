@@ -6,6 +6,7 @@ our $VERSION = '1.10';
 
 use Moo;
 use Catmandu::Fix::Has;
+use Scalar::Util 'reftype';
 
 has tag => (
     fix_arg => 1,
@@ -18,8 +19,10 @@ has tag => (
 sub fix {
     my ( $self, $data ) = @_;
 
-    for ( @{ $data->{record} } ) {
-        $_->[0] = $self->tag;
+    if ( reftype $data->{record} eq 'ARRAY' ) {
+        for ( @{ $data->{record} } ) {
+            $_->[0] = $self->tag;
+        }
     }
 
     return $data;

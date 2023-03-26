@@ -7,6 +7,7 @@ our $VERSION = '1.10';
 use Moo;
 use Catmandu::Fix::Has;
 use PICA::Path;
+use Scalar::Util 'reftype';
 
 has path => (
     fix_arg => 1,
@@ -15,6 +16,7 @@ has path => (
 
 sub fix {
     my ( $self, $data ) = @_;
+    return $data if reftype $data->{record} ne 'ARRAY';
 
     # TODO: put this into PICA::Data
 

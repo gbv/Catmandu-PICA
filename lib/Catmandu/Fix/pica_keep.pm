@@ -7,6 +7,7 @@ our $VERSION = '1.10';
 use Moo;
 use Catmandu::Fix::Has;
 use PICA::Data qw(pica_path pica_fields);
+use Scalar::Util 'reftype';
 
 has pathes => (
     fix_arg => 1,
@@ -17,9 +18,9 @@ has pathes => (
 
 sub fix {
     my ( $self, $data ) = @_;
-
-    $data->{record} = pica_fields( $data, @{ $self->pathes } );
-
+    if ( reftype( $data->{record} ) eq 'ARRAY' ) {
+        $data->{record} = pica_fields( $data, @{ $self->pathes } );
+    }
     return $data;
 }
 
