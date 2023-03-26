@@ -1,6 +1,8 @@
 Changelog for Catmandu-PICA
 
 {{$NEXT}}
+
+1.11 2023-03-26T19:48:47Z
   - Add fixes to modify PICA records: pica_remove, pica_keep, pica_tag, pica_occurrence
   - Add pica_diff binder to support creating PICA Patches
   - Fix #79
