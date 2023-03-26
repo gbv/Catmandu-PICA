@@ -1,5 +1,3 @@
-#!/usr/bin/perl
-
 use strict;
 use Test::More;
 
@@ -19,8 +17,8 @@ my $record = $fixer->fix( $importer->first );
 is pica_string($record->{record}), <<'PICA', "pica_diff";
   003@ $0123
 + 010@ $xbar
-- 021A $aabc
-+ 021A $abar
++ 021A $abar$xyz
+- 021A $abc$xyz
 
 PICA
 
