@@ -37,6 +37,16 @@ introduction into Catmandu.
 
 =item * L<Catmandu::Exporter::PICA>
 
+=item * L<Catmandu::Fix::pica_map>
+
+=item * L<Catmandu::Fix::pica_remove>
+
+=item * L<Catmandu::Fix::pica_keep>
+
+=item * L<Catmandu::Fix::pica_tag>
+
+=item * L<Catmandu::Fix::pica_occurrence>
+
 =item * L<Catmandu::Fix::Bind::pica_each>
 
 =item * L<Catmandu::Fix::Bind::pica_diff>
@@ -44,8 +54,6 @@ introduction into Catmandu.
 =item * L<Catmandu::Fix::Condition::pica_match>
 
 =item * L<Catmandu::Fix::pica_add>
-
-=item * L<Catmandu::Fix::pica_map>
 
 =item * L<Catmandu::Fix::pica_set>
 
