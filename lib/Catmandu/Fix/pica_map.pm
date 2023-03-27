@@ -34,9 +34,13 @@ sub _build_fixer {
         'force_array'   => ( $key =~ /^(\$.*|[0-9]+)$/ ) ? 1 : 0,
     );
 
+    my $pica_path = $self->pica_path;
+    $pica_path = "..../*$pica_path"
+      if $pica_path =~ /^\$/;    # TODO: migrate into PICA::Data
+
     sub {
         my $data    = $_[0];
-        my $matches = pica_match( $data, $self->pica_path, %opt );
+        my $matches = pica_match( $data, $pica_path, %opt );
         if ( defined $matches ) {
             $matches = [$matches]
               if !ref($matches) || ( $opt{split} && !$opt{force_array} );

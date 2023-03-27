@@ -64,7 +64,9 @@ require_ok $pkg;
         fixes => [q|
     add_field(counter,'')
     do pica_each('2...')
-        append(counter,'+')
+        unless pica_match($t)
+            append(counter,'+')
+        end
     end
     |]);
     my $importer = Catmandu::Importer::PICA->new(
@@ -72,7 +74,7 @@ require_ok $pkg;
         type => "Plain"
     );
     my $record = $fixer->fix( $importer->first );
-    is $record->{counter}, '++++++', 'iterated over all 2...fields';
+    is $record->{counter}, '+++++', 'iterated over all 2...fields';
     is @{$record->{record}}, 16, 'does not remove fields (#84)';
 }
 
