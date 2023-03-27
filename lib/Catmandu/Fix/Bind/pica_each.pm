@@ -70,13 +70,6 @@ Catmandu::Fix::Bind::pica_each - a binder that loops over PICA fields
         end
     end
 
-    # Delete all the 041A subject fields
-    do pica_each()
-        if pica_match("041A",".*")
-            reject()
-        end
-    end
-
     do pica_each("0...")
         # process only level 0 fields
     end

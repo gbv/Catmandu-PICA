@@ -2,6 +2,7 @@ Changelog for Catmandu-PICA
 
 {{$NEXT}}
   - Fix #84 in pica_each
+  - Change wrong example using reject (#64)
 
 1.11 2023-03-26T19:48:47Z
   - Add fixes to modify PICA records: pica_remove, pica_keep, pica_tag, pica_occurrence

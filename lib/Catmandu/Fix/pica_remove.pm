@@ -60,8 +60,8 @@ Catmandu::Fix::pica_remove - remove PICA (sub)fields
 
 =head1 SYNOPSIS
 
-    # remove all 021A fields
-    pica_remove('021A')
+    # delete all the 041A subject fields
+    pica_remove(041A)
 
     # remove all $9 subfields from all level 0 fields
     pica_remove('0...$9')
