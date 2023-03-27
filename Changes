@@ -1,6 +1,7 @@
 Changelog for Catmandu-PICA
 
 {{$NEXT}}
+  - pica_keep: allow multiple fields
 
 1.12 2023-03-27T09:00:33Z
   - Fix #84 in pica_each
