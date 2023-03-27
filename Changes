@@ -1,6 +1,8 @@
 Changelog for Catmandu-PICA
 
 {{$NEXT}}
+
+1.12 2023-03-27T09:00:33Z
   - Fix #84 in pica_each
   - Change wrong example using reject (#64)
   - Allow bare subfields in pica_match/pica_map
