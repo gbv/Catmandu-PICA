@@ -73,6 +73,7 @@ require_ok $pkg;
     );
     my $record = $fixer->fix( $importer->first );
     is $record->{counter}, '++++++', 'iterated over all 2...fields';
+    is @{$record->{record}}, 16, 'does not remove fields (#84)';
 }
 
 done_testing;

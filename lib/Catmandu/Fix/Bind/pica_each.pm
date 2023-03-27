@@ -26,26 +26,24 @@ sub unit {
 
 sub bind {
     my ( $self, $data, $code ) = @_;
-    return if reftype( $data->{record} ) ne 'ARRAY';
+    return $data if $self->done or reftype( $data->{record} ) ne 'ARRAY';
 
-    return $data if $self->done;
-
-    my $fields = $data->{record} // [];
-
-    if ( $self->pica_path ) {
-        @$fields = grep { $self->pica_path->match_field($_) } @{$fields};
-    }
+    my $fields = $data->{record};
 
     my @new = ();
 
     for my $field ( @{$fields} ) {
+        if ( $self->pica_path && !$self->pica_path->match_field($field) ) {
+            push @new, $field;
+        }
+        else {
+            $data->{record} = [$field];
 
-        $data->{record} = [$field];
+            my $fixed = $code->($data);
 
-        my $fixed = $code->($data);
-
-        push @new, @{ $fixed->{record} }
-          if defined($fixed) && exists $fixed->{record};
+            push @new, @{ $fixed->{record} }
+              if defined($fixed) && exists $fixed->{record};
+        }
     }
 
     $data->{record} = \@new if exists $data->{record};
