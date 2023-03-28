@@ -13,10 +13,8 @@ sub bind {
     my ( $self, $data, $code ) = @_;
     return if reftype( $data->{record} ) ne 'ARRAY';
 
-    my $ppn = pica_fields( $data->{record}, '003@' );
-
-    # TODO: $data->pica_fields should do, will be fixed in PICA-Data 2.07
-    my $before = [ map { [@$_] } @{ $data->{record} } ];
+    my $ppn    = pica_fields( $data->{record}, '003@' );
+    my $before = pica_fields( $data->{record} );
 
     $code->($data);
     my $diff   = pica_diff( $before, $data->{record} );
