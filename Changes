@@ -1,6 +1,8 @@
 Changelog for Catmandu-PICA
 
 {{$NEXT}}
+
+1.13 2023-04-14T09:01:25Z
   - pica_keep: allow multiple fields
   - pica_remove: make path optional
   - fix pica_diff
