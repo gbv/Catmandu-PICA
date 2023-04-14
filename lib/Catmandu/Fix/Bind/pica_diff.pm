@@ -14,7 +14,7 @@ sub bind {
     return if reftype( $data->{record} ) ne 'ARRAY';
 
     my $ppn    = pica_fields( $data->{record}, '003@' );
-    my $before = pica_fields( $data->{record} );
+    my $before = [ map { [@$_] } @{ $data->{record} } ];
 
     $code->($data);
     my $diff   = pica_diff( $before, $data->{record} );
