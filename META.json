@@ -4,7 +4,7 @@
       "- Johann Rolschewski and Jakob Voss"
    ],
    "dynamic_config" : 0,
-   "generated_by" : "Minilla/v3.1.15, CPAN::Meta::Converter version 2.150010",
+   "generated_by" : "Minilla/v3.1.21, CPAN::Meta::Converter version 2.150010",
    "license" : [
       "perl_5"
    ],
@@ -71,7 +71,7 @@
          "web" : "https://github.com/gbv/Catmandu-PICA"
       }
    },
-   "version" : "1.13",
+   "version" : "1.14",
    "x_contributors" : [
       "Carsten Klee <klee@cpan.org>",
       "E. Choroba <choroba@matfyz.cz>",
