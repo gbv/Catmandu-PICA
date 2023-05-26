@@ -1,6 +1,7 @@
 Changelog for Catmandu-PICA
 
 {{$NEXT}}
+  - pica_add creates missing record (#77)
 
 1.13 2023-04-14T09:01:25Z
   - pica_keep: allow multiple fields

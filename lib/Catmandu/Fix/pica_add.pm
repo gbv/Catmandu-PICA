@@ -23,7 +23,8 @@ sub _build_fixer {
     my ($self) = @_;
 
     my $value_getter  = as_path( $self->path )->getter;
-    my $record_getter = as_path( $self->record // 'record' )->getter;
+    my $record_path   = as_path( $self->record // 'record' );
+    my $record_getter = $record_path->getter;
     my $pica_path     = $self->pica_path;
     my $force_new     = $self->force_new;
 
@@ -43,7 +44,14 @@ sub _build_fixer {
           map { ref $_ eq 'ARRAY' ? @$_ : $_ } @{ $value_getter->($data) };
         return $data unless @values;
 
-        for my $record ( @{ $record_getter->($data) } ) {
+        my $records = $record_getter->($data);
+        if ( !@$records ) {
+            my $record = [];
+            $records = [$record];
+            $record_path->creator($record)->($data);
+        }
+
+        for my $record (@$records) {
 
             my $fields =
               [ $force_new ? () : grep { $pica_path->match_field($_) }
