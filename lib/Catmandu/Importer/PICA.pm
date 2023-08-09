@@ -99,8 +99,8 @@ C<fh>, etc.) the importer can be configured with the following parameters:
 Describes the PICA+ syntax variant. Supported values (case ignored) include the
 default value C<xml> for PicaXML, C<plain> for human-readable PICA+
 serialization (where C<$> is used as subfield indicator), C<plus> or
-C<picaplus> for normalized PICA+, C<binary> for binary PICA+ and C<ppxml> for
-the PICA+ XML variant of the DNB.
+C<picaplus> for normalized PICA+, C<import> for PICA import format, C<binary>
+for binary PICA+ and C<ppxml> for the PICA+ XML variant of the DNB.
 
 =item level
 

@@ -1,6 +1,7 @@
 Changelog for Catmandu-PICA
 
 {{$NEXT}}
+  - Update PICA::Data to support parsing PICA Import format (#88)
 
 1.14 2023-05-26T06:13:27Z
   - pica_add creates missing record (#77)
