@@ -2,7 +2,7 @@ package Catmandu::Importer::PICA;
 use strict;
 use warnings;
 
-our $VERSION = '1.14';
+our $VERSION = '1.15';
 
 use Catmandu::Sane;
 use PICA::Data qw(pica_parser);

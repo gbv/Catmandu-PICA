@@ -1,6 +1,6 @@
 package Catmandu::Fix::pica_map;
 
-our $VERSION = '1.14';
+our $VERSION = '1.15';
 
 use Catmandu::Sane;
 use Moo;
