@@ -138,7 +138,8 @@ If PICA field does not exist, it will be created.
 
 =head1 SEE ALSO
 
-See L<Catmandu::Fix::pica_set> for setting a new value to an existing subfield.
+See L<Catmandu::Fix::pica_set> and L<Catmandu::Fix:pica_update> for setting
+new values to (sub)fields.
 
 See L<Catmandu::Fix::pica_map> if you want to copy values from a PICA record.
 

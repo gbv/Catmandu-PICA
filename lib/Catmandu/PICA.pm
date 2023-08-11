@@ -53,6 +53,8 @@ introduction into Catmandu.
 
 =item * L<Catmandu::Fix::Condition::pica_match>
 
+=item * L<Catmandu::Fix::pica_update>
+
 =item * L<Catmandu::Fix::pica_add>
 
 =item * L<Catmandu::Fix::pica_set>
