@@ -48,7 +48,7 @@ Catmandu::Fix::Condition::pica_match - Conditionals on PICA fields
    
    # pica_match(PICA_PATH,REGEX)
    
-   if pica_match('021A$a','My funny title')
+   if pica_match('021A$a','^My funny title$')
    	add_field('my.funny.title','true')
    end
 
