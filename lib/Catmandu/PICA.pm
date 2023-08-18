@@ -59,6 +59,8 @@ introduction into Catmandu.
 
 =item * L<Catmandu::Fix::pica_update> change/add PICA values to fixed strings
 
+=item * L<Catmandu::Fix::pica_append> parse and append full PICA fields
+
 =item * L<Catmandu::Fix::pica_set> set PICA values from other fields
 
 =item * L<Catmandu::Fix::pica_add> add PICA values from other fields
