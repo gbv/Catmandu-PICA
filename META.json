@@ -45,7 +45,7 @@
             "Catmandu" : "1.20",
             "Catmandu::SRU" : "0.427",
             "Moo" : "1.0",
-            "PICA::Data" : "2.10",
+            "PICA::Data" : "2.12",
             "perl" : "v5.14.1"
          }
       },
@@ -71,7 +71,7 @@
          "web" : "https://github.com/gbv/Catmandu-PICA"
       }
    },
-   "version" : "1.17",
+   "version" : "1.18",
    "x_contributors" : [
       "Carsten Klee <klee@cpan.org>",
       "E. Choroba <choroba@matfyz.cz>",
