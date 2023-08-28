@@ -1,6 +1,7 @@
 Changelog for Catmandu-PICA
 
 {{$NEXT}}
+  - Update dependency on PICA::Data 2.12
 
 1.17 2023-08-18T06:06:33Z
   - Add Fix: pica_append (#82)
